@@ -77,6 +77,25 @@
           <p>To test URLs, <a href="https://github.umn.edu/Libraries/url-js">Libraries/url-js</a> makes HTTP requests of them with node, and scrapes their responses with <a href="https://cheeriojs.github.io/cheerio/">Cheerio</a>: "Fast, flexible, and lean implementation of core jQuery designed specifically for the server." Much easier than scraping with XPath combined with some other server-side language.</p>
 				</section>
 
+				<section>
+					<h2>Class Pattern for npm Modules</h2>
+          <pre><code class="javascript" data-trim contenteditable>
+// Constructor
+function Foo(bar) {
+  // always initialize all instance properties
+  this.bar = bar;
+  this.baz = 'baz'; // default value
+}
+// class methods
+Foo.prototype.fooBar = function() {
+
+};
+// export the class
+module.exports = Foo;
+          </code></pre>
+          <p><small>-- <a href="http://book.mixu.net/node/ch6.html">Mixu's Node book, Chapter 6: Objects and classes by example</a></small></p>
+				</section>
+
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
