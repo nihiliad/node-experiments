@@ -97,6 +97,32 @@ module.exports = Foo;
 				</section>
 
 				<section>
+					<h2>Inheritance in Plain Old JavaScript</h2>
+          <p>To reduce dependencies, instead of using node's built-in <a href="http://nodejs.org/api/util.html#util.inherits">util.inherits()</a>, I used plain old JavaScript:
+          <pre><code class="javascript" data-trim contenteditable>
+function Animal(name) {
+  this.name = name;
+};
+Animal.prototype.move = function(meters) {
+  console.log(this.name+" moved "+meters+"m.");
+};
+
+function Snake() {
+  Animal.apply(this, Array.prototype.slice.call(arguments));
+};
+Snake.prototype = new Animal();
+Snake.prototype.move = function() {
+  console.log("Slithering...");
+  Animal.prototype.move.call(this, 5);
+};
+
+var sam = new Snake("Sammy the Python");
+sam.move();
+          </code></pre>
+          <p><small>-- <a href="http://book.mixu.net/node/ch6.html">Mixu's Node book, Chapter 6: Objects and classes by example</a></small></p>
+				</section>
+
+				<section>
 					<h2>Cons</h2>
           <ul>
             <li class="fragment">JavaScript: Commonly-known and -used, but not commonly-understood.</li>
